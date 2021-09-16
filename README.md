@@ -2,7 +2,7 @@ This project creates slack user bot for radio streaming via huddles on ubuntu VM
 
 # How it works
 
-On current setup I choose Liquidsoap as audio streaming, than route this stream via PulseAudio onto default input device. That browser verson of slack finds this input mic by default, and some bot logged in slack account as human and starts broadcasting in huddle. This browser automation uses node js with puppeteer bot.
+On current setup I choose Liquidsoap as audio streaming, than route this stream via PulseAudio onto default input device. Than browser version of slack finds this input mic by default. Some bot logging in slack account as human and broadcasting in huddle. This browser automation uses node js with puppeteer bot.
 
 # Setup pulseaudio virtual device
 
