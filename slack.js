@@ -21,6 +21,7 @@ module.exports = new (class SlackTab {
         this.page = await this.browser.newPage();
         await this.page.goto(channelUrl);
         await this.page.waitForTimeout(5 * 1000);
+        // this.page.screenshot({ 'path': 'start.png' });
         const url = await this.page.evaluate(() => document.location.href);
 
         if (url == rootUrl) {
@@ -47,6 +48,7 @@ module.exports = new (class SlackTab {
 
         await this.page.focus('#password');
         await this.page.keyboard.type(password);
+        // this.page.screenshot({ 'path': 'login.png' });
 
         await this.page.click('#signin_btn');
         console.log("wait for login");
@@ -83,8 +85,6 @@ module.exports = new (class SlackTab {
 
     async joinHuddle() {
         const checkbox = await this.page.$('#huddle_toggle');
-        const isInHuddle = await (await checkbox.getProperty('checked')).jsonValue();
-
         await this.page.click('#huddle_toggle');
         // this.page.screenshot({ 'path': 'huddle.png' });
     }

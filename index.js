@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const SlackTab = require('./slack');
 
 module.exports = new (class PuppeteerClient {
