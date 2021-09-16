@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const memberCounterSpan = '.p-huddle_activity__member_count_text';
 
 const executable = process.env.EXECUTABLE;
-const rootUrl = process.env.ROOT_URL;
+const namespaceUrl = process.env.NAMESPACE_URL;
 const channelUrl = process.env.CHANNEL_URL;
 const login = process.env.LOGIN;
 const password = process.env.PASSWORD;
@@ -24,7 +24,7 @@ module.exports = new (class SlackTab {
         // this.page.screenshot({ 'path': 'start.png' });
         const url = await this.page.evaluate(() => document.location.href);
 
-        if (url == rootUrl) {
+        if (url.includes('workspace-signin')) {
             await this.login();
         }
 
@@ -43,6 +43,9 @@ module.exports = new (class SlackTab {
 
     async login() {
         console.log("start login");
+        await this.page.goto(namespaceUrl);
+        await this.page.waitForTimeout(3 * 1000);
+
         await this.page.focus('#email');
         await this.page.keyboard.type(login);
 
@@ -55,7 +58,7 @@ module.exports = new (class SlackTab {
         await this.page.waitForTimeout(5 * 1000);
 
         await this.page.goto(channelUrl);
-        await this.page.waitForTimeout(15 * 1000);
+        await this.page.waitForTimeout(5 * 1000);
         console.log("logged");
     }
 
@@ -81,11 +84,13 @@ module.exports = new (class SlackTab {
         // this.page.screenshot({ 'path': 'audio2.png' });
 
         await this.page.click('button[data-qa=sk_close_modal_button]');
+        console.log("sound checcked");
     }
 
     async joinHuddle() {
         const checkbox = await this.page.$('#huddle_toggle');
         await this.page.click('#huddle_toggle');
+        console.log("join huddle");
         // this.page.screenshot({ 'path': 'huddle.png' });
     }
 })();

@@ -1,14 +1,14 @@
 require('dotenv').config();
 
-const SlackTab = require('./slack');
+const slack = require('./slack');
 
 module.exports = new (class PuppeteerClient {
 
     constructor() {
-        this._slackReady = SlackTab.open();
+        slack.open();
         process.on('SIGINT', function () {
             console.log('Got SIGINT.  Press Control-D to exit.');
-            SlackTab.close();
+            slack.close();
         });
 
     }
