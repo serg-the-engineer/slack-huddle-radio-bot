@@ -1,4 +1,4 @@
-This project creates slack user bot for radio streaming via huddles on ubuntu VM. It's a kind of pet-project for idea testing, any code may be better of course. Tested on Ubuntu 20.04.
+This project creates slack user bot for radio streaming via huddles on ubuntu VM. It's a kind of pet-project for idea testing, with straight forward code. Tested on Ubuntu 20.04.
 
 # How it works
 
@@ -27,9 +27,9 @@ touch daemon_pid.txt
 
 Than copy to `~/liquidsoap` some `default.mp3` and `radio.liq`.
 Start liquidsoap: `liquidsoap radio.liq`
-Check for created `radio.log` for successful start. See something like `Streaming loop starts, synchronized by active sources`
+Check created `radio.log` for successful start. See something like `Streaming loop starts, synchronized by active sources`
 
-Test default input by recording input to file:
+Test default input by recording it to file:
 
 ```
 sudo apt-get -y install alsa-utils
@@ -50,9 +50,9 @@ Xvfb -ac :99 -screen 0 1280x1024x16 & export DISPLAY=:99
 ```
 
 Copy repository, `npm install`.
-Configure your envs, required list at `slack.js`.
+Create .env file in project dir, create required envs from `slack.js`.
 
-Start bot by `npm install`. Wait for connect and listen to your default.mp3 at slack huddle.
+Start bot by `npm start`. Wait for connect and listen to your default.mp3 at slack huddle.
 
 ### Troubleshoot
 

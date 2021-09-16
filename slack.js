@@ -84,7 +84,7 @@ module.exports = new (class SlackTab {
         // this.page.screenshot({ 'path': 'audio2.png' });
 
         await this.page.click('button[data-qa=sk_close_modal_button]');
-        console.log("sound checcked");
+        console.log("sound checked");
     }
 
     async joinHuddle() {
